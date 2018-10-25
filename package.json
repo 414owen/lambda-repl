@@ -1,6 +1,6 @@
 {
   "name": "pure-lambda",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Lambda calculus expression parser and reducer",
   "main": "index.js",
   "repository": "https://github.com/414owen/lambda-repl-js",
