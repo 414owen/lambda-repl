@@ -1,0 +1,10 @@
+{
+  "name": "lambda-repl-js",
+  "version": "1.0.0",
+  "description": "a lambda calculus expression reducer",
+  "main": "index.js",
+  "repository": "https://github.com/414owen/lambda-repl-js",
+  "author": "Owen Shepherd",
+  "license": "GPL3",
+  "private": false
+}
