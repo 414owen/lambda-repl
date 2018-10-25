@@ -3,7 +3,7 @@ const { astNewApp, astNewFunc, astNewVar } = require('./ast');
 function rebindPlaceholder(placeholder, node, val) {
   switch (node.type) {
     case 'app':
-      return ast_new_app(
+      return astNewApp(
         rebindPlaceholder(placeholder, node.left, val),
         rebindPlaceholder(placeholder, node.right, val)
       );

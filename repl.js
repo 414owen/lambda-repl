@@ -1,7 +1,5 @@
 const readline = require('readline');
-const { astToString } = require('./ast');
-const { allReductions } = require('./eval');
-const parser = require("./parser").parser;
+const { allReductionStrings } = require('./index');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -10,10 +8,7 @@ const rl = readline.createInterface({
 
 (function line() {
   rl.question('> ', input => {
-    const output = allReductions(parser.parse(input))
-      .map(astToString)
-      .join('\n');
-    console.log(output);
+    console.log(`${allReductionStrings(input).join('\n')}\n`);
     line();
   });
 })();
