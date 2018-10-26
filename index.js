@@ -7,9 +7,9 @@ const parse = input => parser.parse(input);
 const allReductionStrings = input =>
   allReductions(parse(input)).map(astToString);
 
-
 module.exports = {
   allReductionStrings,
-  parse,
   astToString,
+  parse,
+  singleReduction,
 };
