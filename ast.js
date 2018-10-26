@@ -1,6 +1,6 @@
 const astNewApp = (left, right) => ({ type: 'app', left, right });
 const astNewFunc = (param, body) => ({ type: 'func', param, body });
-const astNewVar = binding => ({ type: 'ident', binding });
+const astNewVar = (binding, deBruijn) => ({ type: 'ident', binding, deBruijn });
 
 function astToString(node) {
   switch (node.type) {
