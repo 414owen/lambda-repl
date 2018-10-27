@@ -2,7 +2,7 @@ const { astNewApp, astNewFunc, astNewVar } = require('./ast');
 
 // couldn't figure out how to assign deBruijn indices form the parser,
 // because jison doesn't seem to like mid-rule actions
-module.exports = ast => {
+const postParse = ast => {
   const indices = {};
   let deBruijn = 0;
 
@@ -17,12 +17,16 @@ module.exports = ast => {
         res = astNewFunc(node.param, rec(node.body));
         deBruijn--;
         break;
-      case 'ident':
-        res = astNewVar(node.binding, deBruijn - (indices[node.binding] || 0));
+      case 'ident': {
+        const index = indices[node.binding];
+        res = astNewVar(node.binding, deBruijn - (index === undefined ? deBruijn : index));
         break;
+      }
     }
     return res;
   }
 
   return rec(ast);
 };
+
+module.exports = postParse;

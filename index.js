@@ -1,4 +1,4 @@
-const { astToString } = require('./ast');
+const { astToString, astToHtmlString } = require('./ast');
 const { allReductions, singleReduction } = require('./eval');
 const parser = require("./parser").parser;
 
@@ -10,6 +10,7 @@ const allReductionStrings = input =>
 module.exports = {
   allReductionStrings,
   astToString,
+  astToHtmlString,
   parse,
   singleReduction,
 };
