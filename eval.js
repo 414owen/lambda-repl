@@ -17,7 +17,7 @@ function rebindPlaceholder(placeholder, node, val, deBruijn) {
       break;
     case 'ident':
       return (node.deBruijn === deBruijn ?
-        (val.type === 'ident' ? ast_new_var(val.binding, 0) : val) : node);
+        (val.type === 'ident' ? astNewVar(val.binding, 0) : val) : node);
   }
 };
 
