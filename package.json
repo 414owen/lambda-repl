@@ -1,6 +1,6 @@
 {
   "name": "pure-lambda",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "Lambda calculus expression parser and reducer",
   "main": "index.js",
   "repository": "https://github.com/414owen/lambda-repl-js",
@@ -11,5 +11,12 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.1.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4"
   }
 }
