@@ -34,27 +34,11 @@ const astToString = (ast, map = {}) =>
   astToPrintTokens(ast).map(
     ([type, val]) => (map[type] || defaultMap[type] || (() => type))(val)).join('');
 
-const classNameMap = {
-  '\\': 'lambda',
-  '(': 'lbrac',
-  ')': 'rbrac',
-  '.': 'dot',
-};
-
-const span = (className, str) => `<span className="${className}">${str}</span>`;
-
-const astToHtmlString = ast => span('lambda-calculus', astToString(ast, {
-  ...(printTokens.reduce((acc, token) => {
-    const className = classNameMap[token] || token;
-    return ({ ...acc, [token]: val => span(className, val || token) });
-  }, {}))
-}));
-
 module.exports = {
   astNewApp,
   astNewFunc,
   astNewVar,
   astToPrintTokens,
   astToString,
-  astToHtmlString,
+  printTokens,
 };
