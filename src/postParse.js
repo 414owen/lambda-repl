@@ -1,4 +1,4 @@
-const { astNewApp, astNewFunc, astNewVar } = require('./ast');
+import { astNewApp, astNewFunc, astNewVar } from './ast';
 
 // couldn't figure out how to assign deBruijn indices form the parser,
 // because jison doesn't seem to like mid-rule actions
@@ -29,4 +29,4 @@ const postParse = ast => {
   return rec(ast);
 };
 
-module.exports = postParse;
+export default postParse;

@@ -1,7 +1,7 @@
 %{
 
-const { astNewApp, astNewFunc, astNewVar } = require('./ast');
-const postParse = require('./postParse');
+import { astNewApp, astNewFunc, astNewVar } from './ast';
+import postParse from './postParse';
 
 %}
 
