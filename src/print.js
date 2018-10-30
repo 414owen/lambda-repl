@@ -24,6 +24,7 @@ const defaultPrintFunction = token => ({
   'param': id,
   'free': id,
   'bound': id,
+  '.': () => '->',
 }[token] || (() => token));
 
 export const astToString = (ast, printFunctions = {}) =>
@@ -39,9 +40,18 @@ const htmlClass = token => ({
   '.': 'dot',
 }[token] || token);
 
+const htmlEscape = str =>
+  str
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
 export const astToHtmlString = (ast, printFunctions = {}) =>
   span('lambda-listing', astToString(ast, printTokens.reduce((acc, token) => ({
     ...acc,
-    [token]: val => span(htmlClass(token), (printFunctions[token] ||
-      defaultPrintFunction(token))(val)),
-  }))));
+    [token]: val => span(htmlClass(token),
+      htmlEscape((printFunctions[token] ||
+        defaultPrintFunction(token))(val))),
+  }), {})));

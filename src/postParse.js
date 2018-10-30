@@ -12,11 +12,13 @@ const postParse = ast => {
       case 'app':
         res = astNewApp(rec(node.left), rec(node.right));
         break;
-      case 'func':
+      case 'func': {
+        const oldIndex = indices[node.param];
         indices[node.param] = deBruijn++;
         res = astNewFunc(node.param, rec(node.body));
-        deBruijn--;
+        indices[node.param] = oldIndex;
         break;
+      }
       case 'ident': {
         const index = indices[node.binding];
         res = astNewVar(node.binding, deBruijn - (index === undefined ? deBruijn : index));
