@@ -17,6 +17,7 @@ const postParse = ast => {
         indices[node.param] = deBruijn++;
         res = astNewFunc(node.param, rec(node.body));
         indices[node.param] = oldIndex;
+        deBruijn--;
         break;
       }
       case 'ident': {
