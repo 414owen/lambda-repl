@@ -1,6 +1,6 @@
 # Pure-Lambda-JS
 
-**New and shiny** - check out the [live demo](https://owen.cafe/try-lambda/).
+**New and shiny** - check out the [live demo](https://lambda.how/).
 
 This is a JavaScript port of my C lambda parser / reducer found [here](https://github.com/414owen/pure-lambda).
 
