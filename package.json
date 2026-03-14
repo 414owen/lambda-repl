@@ -2,6 +2,7 @@
   "name": "pure-lambda",
   "version": "3.0.1",
   "description": "Lambda calculus expression parser and reducer",
+  "type": "module",
   "main": "dist/index.umd.js",
   "repository": "https://github.com/414owen/lambda-repl-js",
   "author": "Owen Shepherd",
@@ -12,11 +13,11 @@
     "@babel/core": "^7.1.2",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-strip": "^3.0.4",
+    "@rollup/plugin-terser": "^0.4.4",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
-    "rollup": "^0.66.6",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-eslint": "^5.0.0",
+    "rollup": "^4.20.0",
     "webpack": "^4.23.1"
   },
   "dependencies": {

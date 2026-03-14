@@ -1,15 +1,11 @@
-import pkg from './package.json';
-import babel from 'rollup-plugin-babel';
-import { eslint } from 'rollup-plugin-eslint';
-console.log(eslint);
+import pkg from './package.json' with { type: 'json' };
+import babel from '@rollup/plugin-babel';
+import terser from '@rollup/plugin-terser';
+import strip from '@rollup/plugin-strip';
+
+const production = !process.env.ROLLUP_WATCH;
 
 export default [
-  // CommonJS (for Node) and ES module (for bundlers) build.
-  // (We could have three entries in the configuration array
-  // instead of two, but it's quicker to generate multiple
-  // builds from a single configuration where possible, using
-  // an array for the `output` option, where we can specify
-  // `file` and `format` for each target)
   {
     input: 'src/index.js',
     external: ['ms'],
@@ -17,6 +13,15 @@ export default [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'es' }
     ],
-    plugins: [ eslint({ exclude: [ 'src/parse.js' ] }), babel() ]
+    plugins: [
+      babel({ babelHelpers: 'bundled' }),
+      production && strip(),
+      production && terser({
+        compress: { passes: 2 },
+        mangle: {},
+        module: true,
+        output: { comments: false }
+      })
+    ]
   }
 ];

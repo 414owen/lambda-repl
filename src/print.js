@@ -20,11 +20,11 @@ export function astToPrintTokens(node) {
 }
 
 const defaultPrintFunction = token => ({
-  '\\': () => '',
+  '\\': () => 'λ',
   'param': id,
   'free': id,
   'bound': id,
-  '.': () => '->',
+  '.': () => '→',
 }[token] || (() => token));
 
 export const astToString = (ast, printFunctions = {}) =>
